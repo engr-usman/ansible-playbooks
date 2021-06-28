@@ -1,12 +1,13 @@
 ---
-- hosts: webserver
-  become: true
+- name: This sets up an httpd webserver - Ansible Tower
+  hosts: all
   tasks:
-    - name: Install web components
-      apt: name={{item}} state=present update_cache=yes
-      with_items:
-        - apache2
-        - libapache2-mod-wsgi
-        - python-pip
-        - python-virtualenv
-        - python-mysqldb
+  - name: Install web components
+    apt: name={{item}} state=present update_cache=yes
+    with_items:
+      - apache2
+    
+  - name: Ensure apache2 started
+    service: name=apache2 state=started enabled=yes
+
+
