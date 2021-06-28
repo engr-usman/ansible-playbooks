@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+  - name: Creating user
+    user:
+      name: ali
+      password: ali123
+      groups: # Empty by default, here we give it some groups
+        - sudo
+      state: present
+      shell: /bin/bash       # Defaults to /bin/bash
+      system: no             # Defaults to no
+      createhome: yes        # Defaults to yes
+      home: /home/ali  # Defaults to /home/<username>
