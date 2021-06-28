@@ -1,0 +1,9 @@
+---
+- name: Uninstall method - Ansible Tower
+  hosts: all
+  tasks:
+  - name: Remove/Uninstall Apache2 
+    apt: name={{item}} state=absent update_cache=yes
+    with_items:
+      - apache2
+      - mysql-*
